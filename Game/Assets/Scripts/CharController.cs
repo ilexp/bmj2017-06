@@ -42,7 +42,7 @@ namespace GameJam
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
 			CameraController camController = FindObjectOfType<CameraController>();
-			float impactImpulse = collision.relativeVelocity.magnitude * this.body.mass;
+			float impactImpulse = collision.relativeVelocity.y * this.body.mass;
 			camController.ShakeScreen(impactImpulse * 0.1f);
 		}
 	}
