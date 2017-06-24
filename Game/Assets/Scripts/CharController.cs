@@ -44,6 +44,13 @@ namespace GameJam
 			CameraController camController = FindObjectOfType<CameraController>();
 			float impactImpulse = collision.relativeVelocity.y * 0.01f * this.body.mass;
 			camController.ShakeScreen(impactImpulse * 0.1f);
+
+			// Move the hero around randomly from the impact
+			{
+				Hero hero = FindObjectOfType<Hero>();
+				Rigidbody2D heroBody = hero.GetComponent<Rigidbody2D>();
+				heroBody.AddForce(impactImpulse * 0.25f * (new Vector2(0.0f, 2.0f) + Random.insideUnitCircle), ForceMode2D.Impulse);
+			}
 		}
 	}
 }
