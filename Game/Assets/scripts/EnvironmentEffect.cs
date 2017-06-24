@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnvironmentEffect : MonoBehaviour {
 
-	public Vector3 startPosition = new Vector3(0, 0, 0);
-	public Vector3 stopPosition = new Vector3(10f, 0, 0);
+	public float maxDistance = 10f;
+	public float spawnRadius = 0.5f;
 	public Vector3 direction = new Vector3(1, 0, 0);
 	public float minSpeed = 0.03f;
 	public float maxSpeed = 0.05f;
@@ -25,7 +25,10 @@ public class EnvironmentEffect : MonoBehaviour {
 		for(int i = 0; i < objectPool.Length; i++)
 		{
 			GameObject toInstantiate = Instantiate(assets[Random.Range(0, assets.Length)], this.gameObject.transform);
+			InitPosition(toInstantiate);
+			toInstantiate.transform.localPosition += direction * Random.Range(0, maxDistance);
 			objectPool[i] = toInstantiate;
+
 			speeds[i] = direction * Random.Range(minSpeed, maxSpeed);
 		}
 	}
@@ -36,12 +39,17 @@ public class EnvironmentEffect : MonoBehaviour {
 		for(int i = 0; i < objectPool.Length; i++)
 		{
 			Transform temp = objectPool[i].transform;
-			temp.Translate(speeds[i]);
+			temp.Translate(speeds[i] * Time.deltaTime);
 
-			if(temp.position.x > stopPosition.x)
+			if(temp.localPosition.magnitude > maxDistance)
 			{
-				temp.position = startPosition;
+				InitPosition(temp.gameObject); 
 			}
 		}	
+	}
+
+	void InitPosition(GameObject _object)
+	{
+		_object.transform.localPosition = Random.onUnitSphere * Random.Range(0, spawnRadius); 
 	}
 }

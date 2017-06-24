@@ -12,6 +12,8 @@ namespace GameJam
 		private float smoothness = 1.0f;
 		[SerializeField]
 		private float targetDistance = 1.0f;
+		[SerializeField]
+		private float targetHeightOffset = 0.0f;
 
 		private float shakeStrength;
 		private Vector3 shakePosOffset;
@@ -27,7 +29,10 @@ namespace GameJam
 		{
 			Transform transform = this.transform;
 
-			Vector3 targetPos = followTarget.position + Vector3.back * this.targetDistance;
+			Vector3 targetPos = followTarget.position + new Vector3(
+				0.0f,
+				this.targetHeightOffset,
+				-this.targetDistance);
 			Vector3 currentPos = transform.position;
 			Vector3 posDiff = targetPos - currentPos;
 
