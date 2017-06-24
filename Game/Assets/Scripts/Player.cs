@@ -7,6 +7,7 @@ namespace GameJam
 	public class Player : MonoBehaviour
 	{
 		[SerializeField] private CharController character;
+		[SerializeField] private CameraController camera;
 
 
 		private void Update()
@@ -15,6 +16,7 @@ namespace GameJam
 			if (Input.GetButtonDown("Jump"))
 			{
 				this.character.Jump();
+				this.camera.ShakeScreen();
 			}
 		}
 	}

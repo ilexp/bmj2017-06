@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1991083526}
+  camera: {fileID: 1430449431}
 --- !u!4 &623116535
 Transform:
   m_ObjectHideFlags: 0
