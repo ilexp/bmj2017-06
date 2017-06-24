@@ -66,7 +66,7 @@ namespace GameJam
 			{
 				Hero hero = FindObjectOfType<Hero>();
 				Rigidbody2D heroBody = hero.GetComponent<Rigidbody2D>();
-				heroBody.AddForce(impactImpulse * 0.25f * (new Vector2(0.0f, 2.0f) + Random.insideUnitCircle), ForceMode2D.Impulse);
+				heroBody.AddForce(impactImpulse * 0.5f * (new Vector2(0.0f, 1.0f) + Random.insideUnitCircle), ForceMode2D.Impulse);
 			}
 		}
 	}
