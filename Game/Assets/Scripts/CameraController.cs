@@ -18,9 +18,9 @@ namespace GameJam
 		private Quaternion shakeRotationOffset;
 
 
-		public void ShakeScreen()
+		public void ShakeScreen(float strength)
 		{
-			shakeStrength += 1.0f;
+			shakeStrength += strength;
 		}
 
 		private void Update()

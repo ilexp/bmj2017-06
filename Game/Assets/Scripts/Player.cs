@@ -16,7 +16,6 @@ namespace GameJam
 			if (Input.GetButtonDown("Jump"))
 			{
 				this.character.Jump();
-				this.camera.ShakeScreen();
 			}
 		}
 	}
